@@ -1,16 +1,16 @@
 package wecc.examples.springboot.mvc.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class ExampleController {
 
-    @RequestMapping("/greeting")
-    public ModelAndView greeting(){
-        return new ModelAndView("greeting")
-                .addObject("name",  "World");
+    @GetMapping("/greeting")
+    public String greeting(Model model){
+        model.addAttribute("name", "World");
+        return "greeting";
     }
 
 }
