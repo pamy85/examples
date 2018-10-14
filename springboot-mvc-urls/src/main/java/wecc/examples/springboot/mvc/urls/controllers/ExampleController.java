@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ExampleController {
 
+    @GetMapping
+    public String select() {
+        return "select";
+    }
+
     @GetMapping("/view")
     public String query(@RequestParam String view) {
         return view;
