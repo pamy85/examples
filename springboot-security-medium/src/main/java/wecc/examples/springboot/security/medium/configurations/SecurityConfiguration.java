@@ -17,31 +17,31 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http
-            .authorizeRequests()
-            .antMatchers("/","/login")
-			.permitAll()
-			.anyRequest()
-			.authenticated();
+				.authorizeRequests()
+				.antMatchers("/", "/login")
+				.permitAll()
+				.anyRequest()
+				.authenticated();
 
 		http
-			.formLogin()
-			.loginPage("/login")
-			.defaultSuccessUrl("/greeting", true)
-			.failureUrl("/login?error")
-			.permitAll();
+				.formLogin()
+				.loginPage("/login")
+				.defaultSuccessUrl("/greeting", true)
+				.failureUrl("/login?error")
+				.permitAll();
 
 		http
-			.logout()
-			.logoutUrl("/logout")
-			.logoutSuccessUrl("/login?logout").permitAll();
+				.logout()
+				.logoutUrl("/logout")
+				.logoutSuccessUrl("/login?logout").permitAll();
 
 	}
-	
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 		auth.inMemoryAuthentication().withUser("user").password(encoder.encode("user1")).roles("USER");
-		auth.inMemoryAuthentication().withUser("root").password(encoder.encode("root1")).roles("USER","ADMIN");
+		auth.inMemoryAuthentication().withUser("root").password(encoder.encode("root1")).roles("USER", "ADMIN");
 	}
 
 }

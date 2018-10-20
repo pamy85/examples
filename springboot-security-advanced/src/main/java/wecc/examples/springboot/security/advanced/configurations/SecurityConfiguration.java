@@ -21,23 +21,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http
-            .authorizeRequests()
-            .antMatchers("/","/login")
-			.permitAll()
-			.anyRequest()
-			.authenticated();
+				.authorizeRequests()
+				.antMatchers("/", "/login")
+				.permitAll()
+				.anyRequest()
+				.authenticated();
 
 		http
-			.formLogin()
-			.loginPage("/login")
-			.defaultSuccessUrl("/greeting", true)
-			.failureUrl("/login?error")
-			.permitAll();
+				.formLogin()
+				.loginPage("/login")
+				.defaultSuccessUrl("/greeting", true)
+				.failureUrl("/login?error")
+				.permitAll();
 
 		http
-			.logout()
-			.logoutUrl("/")
-			.logoutSuccessUrl("/login?logout").permitAll();
+				.logout()
+				.logoutUrl("/")
+				.logoutSuccessUrl("/login?logout").permitAll();
 
 	}
 
