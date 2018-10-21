@@ -6,13 +6,10 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import wecc.examples.springboot.security.advanced.model.User;
 import wecc.examples.springboot.security.advanced.repositories.UserRepository;
-
-import java.util.List;
 
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
@@ -41,3 +38,4 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 		return true;
 	}
 }
+
