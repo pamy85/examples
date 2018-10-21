@@ -17,17 +17,19 @@ public class ExampleController {
         return "login";
     }
 
-    @Secured({"ROLE_USER","ROLE_ADMIN"})
+    @Secured({"ROLE_ADMIN"})
     @GetMapping("/greeting")
     public String sendGreeting(Model model) {
         model.addAttribute("greeting", new Greeting());
         return "send-greeting";
     }
 
-    @Secured("ROLE_ADMIN")
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @PostMapping("/greeting")
     public String readGreeting(@ModelAttribute Greeting greeting) {
         return "read-greeting";
     }
 
 }
+
+
