@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="#{welcome}"></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <h1 th:text="#{welcome}"></h1>
+        <li>
+            <ul><a th:text="#{show_products}" th:href="@{/list}"></a></ul>
+            <ul><a th:text="#{new_product}" th:href="@{/add}"></a></ul>
+        </li>
+
+    </body>
+</html>
+
+
+
+
