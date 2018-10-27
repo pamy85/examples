@@ -1,5 +1,6 @@
 package wecc.examples.springboot.rest.client.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
 import wecc.examples.springboot.rest.client.model.Product;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 @Controller
@@ -19,6 +22,7 @@ public class ProductController {
 
     @Autowired
     private RestTemplate restTemplate;
+
     @Value("${rest.server.url}")
     private String restServerUrl;
 
@@ -33,6 +37,23 @@ public class ProductController {
         List<Product> products = restTemplate.getForObject(restServerUrl + "products",List.class);
         model.addAttribute("products", products);
         return "list";
+    }
+
+    @GetMapping("/list-jackson")
+    public String listWithJackson(Model model) throws Exception{
+        URL url = new URL(restServerUrl + "/products");
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.connect();
+
+        ObjectMapper mapper = new ObjectMapper();
+        List<Product> products = mapper.readValue(connection.getInputStream(), List.class);
+        model.addAttribute("products", products);
+        return "list";
+    }
+
+    @GetMapping("/list-js")
+    public String listWithJS(){
+        return "listJS";
     }
 
     @GetMapping("/add")

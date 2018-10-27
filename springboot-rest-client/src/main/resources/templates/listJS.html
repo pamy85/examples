@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            $(function() {
+                $.ajax({
+                    url: "http://localhost:8081/products"
+                }).then(function (data) {
+                    var tam = data.length;
+                    if (tam != 0){
+                        $("#table tr").remove();
+                        $.each(data, function (index, obj) {
+                            $('#table').append( '<tr><td>' + obj.name + '</td></tr>' );
+                        });
+                    }
+                });
+            });
+        </script>
+        <title th:text="#{show_products}"></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <h1 th:text="#{show_products}"></h1>
+        <table id="table"></table>
+        <a href="/" th:text="#{return}"></a>
+    </body>
+</html>
+

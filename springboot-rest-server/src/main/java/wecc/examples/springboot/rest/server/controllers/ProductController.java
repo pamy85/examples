@@ -12,6 +12,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @RestController
+@CrossOrigin
 public class ProductController {
 
     private Map<String, Product> products = new HashMap<>();
