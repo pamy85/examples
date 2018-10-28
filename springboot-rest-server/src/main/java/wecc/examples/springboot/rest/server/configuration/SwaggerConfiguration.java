@@ -13,7 +13,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 @Configuration
 public class SwaggerConfiguration {
 
-    private static final String GROUP_NAME = "oms-ui";
+    private static final String GROUP_NAME = "wecc-products";
     private static final String PATH_REGEX = "/product.*";
     private static final String API_TITLE = "Product service";
     private static final String API_DESCRIPTION = "This API gives support to Product services";
@@ -42,3 +42,5 @@ public class SwaggerConfiguration {
     }
 
 }
+
+
